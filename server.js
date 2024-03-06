@@ -29,7 +29,7 @@ app.get('/weather/:lat_lon', (req, res) => {
   const foundCity = weatherData.find(city => city.lat === lat && city.lon === lon);
 
   if (!foundCity) {
-    return res.status(404).json({ error: 'City not found. Please search for Seattle, Paris, or Amman.' });
+    return res.status(404).json({error: 'City not found. Please search for Seattle, Paris, or Amman.'});
   } else {
     let weatherDex = foundCity.data.map((values) => {
       return new Forecast(values.datetime, values.weather.description);
