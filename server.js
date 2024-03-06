@@ -13,9 +13,11 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 
 class Forecast {
-  constructor(date, description) {
+  constructor(date, description, high, low) {
     this.date = date;
     this.description = description;
+    this.high = high;
+    this.low = low;
   }
 }
 
@@ -32,15 +34,12 @@ app.get('/weather/:lat_lon', (req, res) => {
     return res.status(404).json({error: 'City not found. Please search for Seattle, Paris, or Amman.'});
   } else {
     let weatherDex = foundCity.data.map((values) => {
-      return new Forecast(values.datetime, values.weather.description);
+      return new Forecast(values.datetime, values.weather.description, values.max_temp, values.min_temp);
     });
 
     res.send(weatherDex);
   }
 });
-
-
-
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
