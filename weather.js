@@ -1,8 +1,5 @@
 
 const axios = require('axios');
-const dotenv = require('dotenv');
-
-dotenv.config();
 const weather_key = process.env.WEATHERBIT_API_KEY;
 
 class Forecast {
@@ -23,8 +20,8 @@ async function fetchWeatherData(raw_lat_lon) {
       return new Forecast(values.datetime, values.weather.description, values.max_temp, values.min_temp);
     });
   } catch (error) {
-    console.log('Cannot get weather data');
-    return [];
+    console.log('Cannot get weather data for provided location');
+    return null;
   }
 }
 

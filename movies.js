@@ -1,8 +1,5 @@
 
 const axios = require('axios');
-const dotenv = require('dotenv');
-
-dotenv.config();
 const movies_key = process.env.MOVIE_API_KEY;
 
 class Movie {
@@ -28,7 +25,7 @@ async function fetchMoviesData(city) {
     });
   } catch (error) {
     console.log('Cannot get movie data');
-    return [];
+    return null;
   }
 }
 

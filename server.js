@@ -3,6 +3,10 @@
 
 const express = require('express');
 const cors = require('cors'); // cross origin resource sharing tool
+
+const dotenv = require('dotenv');
+dotenv.config();
+
 const { fetchWeatherData } = require('./weather');
 const { fetchMoviesData } = require('./movies');
 
