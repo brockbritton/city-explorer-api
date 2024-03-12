@@ -7,12 +7,12 @@ const cors = require('cors'); // cross origin resource sharing tool
 const dotenv = require('dotenv');
 dotenv.config();
 
-const { fetchWeatherData } = require('./weather');
-const { fetchMoviesData } = require('./movies');
-
 const app = express();
 const port = process.env.PORT || 3000;
 app.use(cors());
+
+const { fetchWeatherData } = require('./weather');
+const { fetchMoviesData } = require('./movies');
 
 
 app.get('/', (req, res) => {
